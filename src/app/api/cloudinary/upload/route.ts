@@ -12,7 +12,7 @@ cloudinary.config({
  * Folder structure in Cloudinary:
  *
  
- * CaseCobra/
+ * caseCraft/
  *     └── {configId}/           ← one folder per job/config
  *         ├── original          ← raw user uploaded image
  *         ├── configuration     ← final cropped/positioned image
@@ -23,8 +23,8 @@ type UploadType = 'original' | 'configuration' | 'preview'
 
 function getUploadPath(configId: string, type: UploadType) {
   return {
-    folder: `CaseCobra/${configId}`,
-    public_id: type, // becomes CaseCobra/{configId}/original etc.
+    folder: `caseCraft/${configId}`,
+    public_id: type, // becomes caseCraft/{configId}/original etc.
   }
 }
 
@@ -60,7 +60,7 @@ export async function POST(request: NextRequest) {
           public_id,
           overwrite: true,
           resource_type: 'image',
-          tags: ['casecobra', type, configId],
+          tags: ['caseCraft', type, configId],
         },
         (error, result) => {
           if (error || !result) reject(error ?? new Error('Upload failed'))
