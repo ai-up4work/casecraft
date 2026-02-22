@@ -8,7 +8,7 @@ export type SaveConfigArgs = {
   material: 'silicone' | 'polycarbonate'
   model: 'iphonex' | 'iphone11' | 'iphone12' | 'iphone13' | 'iphone14' | 'iphone15'
   configId: string
-  croppedImageUrl: string // ✅ now saved to Supabase
+  croppedImageUrl?: string // ✅ optional
 }
 
 export async function saveConfig({
@@ -24,6 +24,6 @@ export async function saveConfig({
     case_finish: finish,
     case_material: material,
     phone_model: model,
-    cropped_image_url: croppedImageUrl, // ✅ persisted
+    ...(croppedImageUrl && { cropped_image_url: croppedImageUrl }),
   })
 }
