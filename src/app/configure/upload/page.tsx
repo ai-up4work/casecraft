@@ -10,6 +10,9 @@ import { useState, useTransition } from 'react'
 import Dropzone, { FileRejection } from 'react-dropzone'
 import { createConfiguration } from '@/actions/upload-action'
 
+export const dynamic = 'force-dynamic' // ✅ add this line
+
+
 const Page = () => {
   const { toast } = useToast()
   const [isDragOver, setIsDragOver] = useState<boolean>(false)
