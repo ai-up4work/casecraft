@@ -2,13 +2,13 @@
 
 import { Progress } from '@/components/ui/progress'
 import { useToast } from '@/components/ui/use-toast'
-import { useCloudinaryUpload } from '@/lib/useCloudinaryUpload'
+import { useCloudinaryUpload } from '@/hooks/useCloudinaryUpload'
 import { cn } from '@/lib/utils'
 import { Image, Loader2, MousePointerSquareDashed } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import Dropzone, { FileRejection } from 'react-dropzone'
-import { createConfiguration } from './actions'
+import { createConfiguration } from '@/actions/upload-action'
 
 const Page = () => {
   const { toast } = useToast()
