@@ -133,16 +133,15 @@ const DesignConfigurator = ({
       const blob = base64ToBlob(base64Data, 'image/png')
       const file = new File([blob], 'filename.png', { type: 'image/png' })
 
-      // ✅ Upload as 'configuration' type → Root/CaseCobra/{configId}/configuration
       const [uploaded] = await startUpload([file], { configId, type: 'configuration' })
       return uploaded.secure_url
     } catch (err) {
       toast({
         title: 'Something went wrong',
-        description:
-          'There was a problem saving your config, please try again.',
+        description: 'There was a problem saving your config, please try again.',
         variant: 'destructive',
       })
+      throw err // ✅ this is what was missing
     }
   }
 
