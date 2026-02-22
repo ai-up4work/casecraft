@@ -2,16 +2,13 @@
 
 import { Progress } from '@/components/ui/progress'
 import { useToast } from '@/components/ui/use-toast'
-import { useCloudinaryUpload } from '@/hooks/useCloudinaryUpload'
+import { useCloudinaryUpload } from '@/lib/useCloudinaryUpload'
 import { cn } from '@/lib/utils'
 import { Image, Loader2, MousePointerSquareDashed } from 'lucide-react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useTransition } from 'react'
 import Dropzone, { FileRejection } from 'react-dropzone'
-import { createConfiguration } from '@/actions/upload-action'
-
-export const dynamic = 'force-dynamic' // ✅ add this line
-
+import { createConfiguration } from './actions'
 
 const Page = () => {
   const { toast } = useToast()
@@ -56,7 +53,7 @@ const Page = () => {
         })
       }, 200)
 
-      // 3. Upload to Cloudinary → caseCraft/{tempId}/original
+      // 3. Upload to Cloudinary → Root/CaseCobra/{tempId}/original
       const [uploaded] = await startUpload([file], {
         configId: tempId,
         type: 'original',
